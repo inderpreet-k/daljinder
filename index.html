@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For My Love ❤️</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            overflow: hidden;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(to bottom, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        /* Stars */
+        .star {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle 3s infinite ease-in-out;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.2); }
+        }
+
+        /* Hearts */
+        .heart {
+            position: absolute;
+            color: #ff69b4;
+            font-size: 20px;
+            animation: floatUp 6s infinite ease-in-out;
+            opacity: 0;
+        }
+
+        @keyframes floatUp {
+            0% { transform: translateY(0) rotate(0deg); opacity: 0; }
+            10% { opacity: 0.8; }
+            90% { opacity: 0.8; }
+            100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
+        }
+
+        /* Sparkles */
+        .sparkle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: #ffd700;
+            border-radius: 50%;
+            animation: sparkleAnim 2s infinite ease-in-out;
+            box-shadow: 0 0 10px #ffd700;
+        }
+
+        @keyframes sparkleAnim {
+            0%, 100% { opacity: 0; transform: scale(0); }
+            50% { opacity: 1; transform: scale(1.5); }
+        }
+
+        /* Characters Container */
+        .characters {
+            position: absolute;
+            bottom: 25%;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 50px;
+            z-index: 10;
+        }
+
+        /* Character Base */
+        .character {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            animation: bounce 2s infinite ease-in-out;
+        }
+
+        .character:nth-child(1) {
+            animation-delay: 0s;
+        }
+
+        .character:nth-child(2) {
+            animation-delay: 0.5s;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        /* Character Body */
+        .body {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .character:nth-child(1) .body {
+            background: linear-gradient(135deg, #ffb3d9 0%, #ff85c0 100%);
+        }
+
+        .character:nth-child(2) .body {
+            background: linear-gradient(135deg, #a8d8ff 0%, #7eb8e6 100%);
+        }
+
+        /* Eyes */
+        .eyes {
+            position: absolute;
+            top: 30%;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 15px;
+        }
+
+        .eye {
+            width: 8px;
+            height: 12px;
+            background: #2c3e50;
+            border-radius: 50%;
+            animation: blink 4s infinite;
+        }
+
+        @keyframes blink {
+            0%, 98%, 100% { transform: scaleY(1); }
+            99% { transform: scaleY(0.1); }
+        }
+
+        /* Smile */
+        .smile {
+            position: absolute;
+            bottom: 25%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 30px;
+            height: 15px;
+            border: 3px solid #2c3e50;
+            border-top: none;
+            border-radius: 0 0 30px 30px;
+        }
+
+        /* Cheeks */
+        .cheeks {
+            position: absolute;
+            top: 45%;
+            display: flex;
+            width: 100%;
+            justify-content: space-between;
+            padding: 0 5px;
+        }
+
+        .cheek {
+            width: 15px;
+            height: 10px;
+            background: rgba(255, 182, 193, 0.6);
+            border-radius: 50%;
+        }
+
+        /* Arms */
+        .arms {
+            position: absolute;
+            top: 50%;
+            width: 120%;
+            left: -10%;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .arm {
+            width: 25px;
+            height: 25px;
+            background: inherit;
+            border-radius: 50%;
+            animation: wave 1.5s infinite ease-in-out;
+        }
+
+        .arm.left {
+            animation-delay: 0s;
+        }
+
+        .arm.right {
+            animation-delay: 0.75s;
+        }
+
+        @keyframes wave {
+            0%, 100% { transform: rotate(0deg); }
+            50% { transform: rotate(20deg); }
+        }
+
+        /* Name Tags */
+        .name {
+            margin-top: 15px;
+            font-size: 18px;
+            font-weight: bold;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            font-family: 'Comic Sans MS', cursive;
+        }
+
+        /* Text Container */
+        .text-container {
+            position: absolute;
+            top: 10%;
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+            z-index: 5;
+            width: 90%;
+            max-width: 700px;
+        }
+
+        .love-text {
+            font-size: 28px;
+            color: white;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
+            line-height: 1.6;
+            font-family: 'Brush Script MT', cursive;
+            opacity: 0;
+            animation: fadeInText 2s forwards;
+            animation-delay: 2s;
+        }
+
+        @keyframes fadeInText {
+            to { opacity: 1; }
+        }
+
+        .line {
+            opacity: 0;
+            animation: fadeInLine 1.5s forwards;
+        }
+
+        .line:nth-child(1) { animation-delay: 3s; }
+        .line:nth-child(2) { animation-delay: 4.5s; }
+        .line:nth-child(3) { animation-delay: 6s; }
+        .line:nth-child(4) { animation-delay: 7.5s; }
+        .line:nth-child(5) { animation-delay: 9s; }
+        .line:nth-child(6) { animation-delay: 10.5s; }
+
+        @keyframes fadeInLine {
+            to { opacity: 1; }
+        }
+
+        /* Music Note */
+        .music-note {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 30px;
+            color: white;
+            opacity: 0.7;
+            animation: pulse 1s infinite;
+            cursor: pointer;
+            z-index: 100;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .characters {
+                gap: 30px;
+            }
+            .body {
+                width: 60px;
+                height: 60px;
+            }
+            .love-text {
+                font-size: 20px;
+            }
+            .name {
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="music-note" onclick="toggleMusic()" title="Click for music">🎵</div>
+        
+        <!-- Text Container -->
+        <div class="text-container">
+            <div class="love-text">
+                <div class="line">I love you more than the whole world…</div>
+                <div class="line">More than the universe…</div>
+                <div class="line">More than anything anyone could imagine.</div>
+                <div class="line">Even if you gathered every number together,</div>
+                <div class="line">my love would still be more.</div>
+                <div class="line">There's no limit to how much my heart cares for you ❤️</div>
+            </div>
+        </div>
+
+        <!-- Characters -->
+        <div class="characters">
+            <div class="character">
+                <div class="body">
+                    <div class="eyes">
+                        <div class="eye"></div>
+                        <div class="eye"></div>
+                    </div>
+                    <div class="smile"></div>
+                    <div class="cheeks">
+                        <div class="cheek"></div>
+                        <div class="cheek"></div>
+                    </div>
+                    <div class="arms">
+                        <div class="arm left"></div>
+                        <div class="arm right"></div>
+                    </div>
+                </div>
+                <div class="name">Inderpreet</div>
+            </div>
+
+            <div class="character">
+                <div class="body">
+                    <div class="eyes">
+                        <div class="eye"></div>
+                        <div class="eye"></div>
+                    </div>
+                    <div class="smile"></div>
+                    <div class="cheeks">
+                        <div class="cheek"></div>
+                        <div class="cheek"></div>
+                    </div>
+                    <div class="arms">
+                        <div class="arm left"></div>
+                        <div class="arm right"></div>
+                    </div>
+                </div>
+                <div class="name">Daljit</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Create stars
+        for (let i = 0; i < 100; i++) {
+            const star = document.createElement('div');
+            star.className = 'star';
+            star.style.width = Math.random() * 3 + 1 + 'px';
+            star.style.height = star.style.width;
+            star.style.left = Math.random() * 100 + '%';
+            star.style.top = Math.random() * 100 + '%';
+            star.style.animationDelay = Math.random() * 3 + 's';
+            document.querySelector('.container').appendChild(star);
+        }
+
+        // Create floating hearts
+        setInterval(() => {
+            const heart = document.createElement('div');
+            heart.className = 'heart';
+            heart.innerHTML = '❤️';
+            heart.style.left = Math.random() * 100 + '%';
+            heart.style.bottom = '0';
+            heart.style.animationDelay = Math.random() * 2 + 's';
+            document.querySelector('.container').appendChild(heart);
+            
+            setTimeout(() => heart.remove(), 6000);
+        }, 2000);
+
+        // Create sparkles
+        setInterval(() => {
+            const sparkle = document.createElement('div');
+            sparkle.className = 'sparkle';
+            sparkle.style.left = Math.random() * 100 + '%';
+            sparkle.style.top = Math.random() * 100 + '%';
+            document.querySelector('.container').appendChild(sparkle);
+            
+            setTimeout(() => sparkle.remove(), 2000);
+        }, 500);
+
+        // Simple audio context for gentle tones (optional)
+        let audioContext;
+        let isPlaying = false;
+
+        function toggleMusic() {
+            if (!audioContext) {
+                audioContext = new (window.AudioContext || window.webkitAudioContext)();
+            }
+
+            if (isPlaying) {
+                // Stop music
+                isPlaying = false;
+                document.querySelector('.music-note').style.opacity = '0.7';
+            } else {
+                // Play gentle tones
+                playGentleMelody();
+                isPlaying = true;
+                document.querySelector('.music-note').style.opacity = '1';
+            }
+        }
+
+        function playGentleMelody() {
+            if (!isPlaying) return;
+
+            const notes = [523.25, 587.33, 659.25, 783.99, 880.00]; // C, D, E, G, A
+            const randomNote = notes[Math.floor(Math.random() * notes.length)];
+
+            const oscillator = audioContext.createOscillator();
+            const gainNode = audioContext.createGain();
+
+            oscillator.connect(gainNode);
+            gainNode.connect(audioContext.destination);
+
+            oscillator.frequency.value = randomNote;
+            oscillator.type = 'sine';
+
+            gainNode.gain.setValueAtTime(0, audioContext.currentTime);
+            gainNode.gain.linearRampToValueAtTime(0.1, audioContext.currentTime + 0.1);
+            gainNode.gain.linearRampToValueAtTime(0, audioContext.currentTime + 0.8);
+
+            oscillator.start(audioContext.currentTime);
+            oscillator.stop(audioContext.currentTime + 0.8);
+
+            setTimeout(() => playGentleMelody(), 1000 + Math.random() * 1000);
+        }
+    </script>
+</body>
+</html>
